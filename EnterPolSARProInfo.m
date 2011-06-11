@@ -33,8 +33,8 @@ global POLSARPRO_API_IN_DIR;
 global POLSARPRO_DIR;
 if ~exist('POLSARPRO_API_OUT_DIR','var') || isempty(POLSARPRO_API_OUT_DIR),
     POLSARPRO_DIR= sPSP_Path;
-    POLSARPRO_API_OUT_DIR= inputDir;
-    POLSARPRO_API_IN_DIR= outputDir;
+    POLSARPRO_API_OUT_DIR= outputDir;
+    POLSARPRO_API_IN_DIR= inputDir;
 else
     POLSARPRO_DIR= sPSP_Path;
     POLSARPRO_API_IN_DIR= inputDir;
