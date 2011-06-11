@@ -1,4 +1,22 @@
 function [vFileNames, vComplex]= FileNames(dataType)
+% Synopsis:
+%  [vFileNames, vComplex]= FileNames(dataType)
+% 
+% Input:
+% - dataType     defines the data type ('T3', 'C3', 'FREEMAN');
+% 
+% Output:
+% - vFileNames     list of filenames
+% - vComplex       data type (complex or real)
+%
+% Description:
+%  Return the list of file names used by PolSARPro for each data type
+%
+% See also
+%
+% Revisions:
+%   S. Foucher: initial version (2011/10/06)
+%
 vFileNames= {};
 switch(upper(dataType))
     case 'T3'
