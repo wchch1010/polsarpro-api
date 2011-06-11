@@ -1,4 +1,4 @@
-function [st]= psp2mat(dataType,folderName)
+function [st]= psp2mat(dataType,folderName,sHeaderName)
 
 %% Synopsis:
 %  [stPolSAR]= psp2mat(dataType, folderName)
@@ -34,21 +34,28 @@ function [st]= psp2mat(dataType,folderName)
 global POLSARPRO_API_OUT_DIR;
 global POLSARPRO_API_IN_DIR;
 
-if ~exist('folderName','var')
-    folderName= [POLSARPRO_API_OUT_DIR '/'];
+if exist('sHeaderName')
+    HEADER_NAME= sHeaderName;
+else
+    HEADER_NAME= [];
 end
-
+if ~exist('folderName','var')
+    folderName= POLSARPRO_API_OUT_DIR;
+end
+if folderName(end) ~= '/'
+    folderName= [folderName '/'];
+end
 [vFileNames, vComplex]= FileNames(dataType);
 num_bands= numel(vComplex);
 p= 1;
 for b=1:num_bands
    if vComplex(b)
-       st.data(:,:,b)= ReadBand(vFileNames{p},folderName);
+       st.data(:,:,b)= ReadBand(vFileNames{p},folderName,HEADER_NAME);
        p=p+1;
-       st.data(:,:,b)= st.data(:,:,b) + j.*ReadBand(vFileNames{p},folderName);
+       st.data(:,:,b)= st.data(:,:,b) + j.*ReadBand(vFileNames{p},folderName,HEADER_NAME);
        p=p+1;
    else
-       st.data(:,:,b)= ReadBand(vFileNames{p},folderName);
+       st.data(:,:,b)= ReadBand(vFileNames{p},folderName,HEADER_NAME);
        p=p+1;
    end
 end
@@ -60,9 +67,13 @@ end
 st.info.type = dataType;
 st.info.vComplex= vComplex;
 
-function data= ReadBand(sFileName,folderName)
-[num_samples,num_lines,nBands,nHeaderOffset,nDataType,sInterleave,nByteOrder]= ReadHeader([folderName sFileName]);
+function data= ReadBand(sFileName,folderName,HEADER_NAME)
 
+if isempty(HEADER_NAME)
+    [num_samples,num_lines,nBands,nHeaderOffset,nDataType,sInterleave,nByteOrder]= ReadHeader([folderName sFileName]);
+else
+    [num_samples,num_lines,nBands,nHeaderOffset,nDataType,sInterleave,nByteOrder]= ReadHeader([HEADER_NAME]);
+end
 data= multibandread([folderName sFileName],[num_samples,num_lines,nBands],'float32',nHeaderOffset,sInterleave,'ieee-le');
 
 
