@@ -46,6 +46,16 @@ switch(upper(dataType))
         vFileNames{1} = 'Freeman_Dbl.bin';
         vFileNames{2} = 'Freeman_Vol.bin';
         vFileNames{3} = 'Freeman_Odd.bin';
+    case 'HAALPHA'
+        vComplex=[0 0 0];
+        vFileNames{1} = 'entropy.bin';
+        vFileNames{2} = 'anisotropy.bin';
+        vFileNames{3} = 'alpha.bin';
+    case 'WISHART_HAALPHA'
+        vComplex=[0 0];
+        vFileNames{1} = 'wishart_H_alpha_class_1.bin';
+        vFileNames{2} = 'wishart_H_A_alpha_class_1.bin';
+        
     otherwise
         disp(['Unknown format: ' dataType]);
         
