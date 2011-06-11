@@ -1,4 +1,4 @@
-function mat2psp(inPolSAR, folderName, bWriteBin)
+function stHeaderName= mat2psp(inPolSAR, folderName, bWriteBin)
 %% Synopsis:
 %  mat2psp(inPolSAR, folderName)
 % 
@@ -28,6 +28,8 @@ function mat2psp(inPolSAR, folderName, bWriteBin)
 % Created in 2011
 %
 %
+error(nargchk(1,3,nargin, 'struct'));
+error(nargoutchk(0,1,nargout, 'struct'));
 global POLSARPRO_API_OUT_DIR;
 global POLSARPRO_API_IN_DIR;
 global POLSARPRO_DIR;
@@ -61,12 +63,17 @@ if strcmpi(upper(dataType), 'T3')
     for b=1:num_bands
        if vComplex(b)
            WriteBand(real(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
+            stHeaderName{p}= [ vFileNames{p} '.hdr'];
            p=p+1;
            WriteBand(imag(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
+            stHeaderName{p}= [ vFileNames{p} '.hdr'];
            p=p+1;
+          
        else
            WriteBand(real(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
+           stHeaderName{p}= [ vFileNames{p} '.hdr'];
            p=p+1;
+           
        end
     end
    
