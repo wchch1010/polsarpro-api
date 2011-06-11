@@ -26,10 +26,6 @@ function [st]= psp2mat(dataType,folderName,sHeaderName)
 % T33.bin
 %
 %
-% Author: Sovattara Hell, Gregory Farage, Samuel Foucher - Vision team, Dept. of R&D, CRIM
-% Created in 2008
-%
-%
 
 global POLSARPRO_API_OUT_DIR;
 global POLSARPRO_API_IN_DIR;
