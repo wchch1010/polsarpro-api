@@ -38,13 +38,28 @@ num_bands= numel(vComplex);
 p= 1;
 for b=1:num_bands
    if vComplex(b)
+       try
        st.data(:,:,b)= ReadBand(vFileNames{p},folderName,HEADER_NAME);
        p=p+1;
+       catch
+           
+       end
+       
+       try
        st.data(:,:,b)= st.data(:,:,b) + j.*ReadBand(vFileNames{p},folderName,HEADER_NAME);
        p=p+1;
+       catch
+           
+       end
+      
    else
+       try
        st.data(:,:,b)= ReadBand(vFileNames{p},folderName,HEADER_NAME);
        p=p+1;
+       catch
+           
+       end
+      
    end
 end
     
