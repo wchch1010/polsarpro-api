@@ -1,0 +1,10 @@
+function test_read_write
+close all;
+clc;
+disp('Start test_read_write');
+load 'test.mat';
+disp('Writing test set');
+base_dir = [fileparts(which('test_read_write')) '/'];
+mat2psp(st, base_dir);
+disp('Loading test set');
+st2= mat2psp(st, base_dir);

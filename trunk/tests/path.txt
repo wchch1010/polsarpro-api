@@ -1,0 +1,3 @@
+C:/Develop/sfng/PolSARpro_v4.2.0
+C:/Develop/sfng/PolSARpro_v4.2.0/in
+C:/Develop/sfng/PolSARpro_v4.2.0/out

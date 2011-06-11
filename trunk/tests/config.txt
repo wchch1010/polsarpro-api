@@ -1,0 +1,11 @@
+Nrow
+256
+---------
+Ncol
+256
+---------
+PolarCase
+monostatic
+---------
+PolarType
+full
