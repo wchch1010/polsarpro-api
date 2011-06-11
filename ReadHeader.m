@@ -1,4 +1,17 @@
 function [num_samples,num_lines,nBands,nHeaderOffset,nDataType,sInterleave,nByteOrder]= ReadHeader(sName)
+% Synopsis:
+%  [num_samples,num_lines,nBands,nHeaderOffset,nDataType,sInterleave,nByteO
+%  rder]= ReadHeader(sName)
+%
+% Description:
+%  Read the content of header file (ENVI format)
+%
+% See also
+%
+% Revisions:
+%   S. Foucher: initial version (2011/10/06)
+%
+
 if isempty(findstr(sName, 'hdr'))
     fid=fopen([sName '.hdr']);
 else
