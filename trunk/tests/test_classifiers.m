@@ -8,3 +8,6 @@ load 'test.mat';
 [stCL]= pspWishartHAAlphaClassifier(stF)
 RGB0= [stCL.data(:,:,1) stCL.data(:,:,2)];
 figure('Name','pspWishartHAAlphaClassifier'),imagesc(RGB0);axis image off; colorbar;
+[stCL]= pspHAAlphaPlanesClassifier(stF);
+RGB0= [stCL.data(:,:,1) stCL.data(:,:,2) stCL.data(:,:,3)];
+figure('Name','pspHAAlphaPlanesClassifier'),imagesc(RGB0);axis image off; colorbar;
