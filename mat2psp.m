@@ -1,33 +1,24 @@
 function stHeaderName= mat2psp(inPolSAR, folderName, bWriteBin)
-%% Synopsis:
-%  mat2psp(inPolSAR, folderName)
+% Synopsis:
+%  stHeaderName= mat2psp(inPolSAR, folderName, bWriteBin)
 % 
 % Input:
-% - inPolSAR     structure  .data  [n m 6] data -> [n m (X11,X12,X13,X22,X23,X33)]
-%                           .info(.type,.history)
-% or
-% 
-% - inPolSAR     structure  .data(.band1,...,.band6) (X11,X12,X13,X22,X23,X33)
-%                           .info(.type,.history)
-% - folderName  string  path directory of PolSARpro data output folder  
-% 
+% - inPolSAR     data to be written
+% - folderName   folder where to write the files (optional)
+% - bWriteBin    flag to write the bin files (default at true)
+%
 % Output:
-% 
+% - stHeaderName   names of the header files
+%
 % Description:
-% mat2polSARpro convert a coherency or covariance matrix file .mat of 
-% Matlab PolSARTools into the coherency matrix file .bin of PolSARPro.
-% 
+%  Write the matlab data in polsarpro files
+%
+% See also
+%
+% Revisions:
+%   S. Foucher: initial version (2011/10/06)
+%
 
-% Inputs  : In in_dir directory
-% T11.bin, T12_real.bin, T12_imag.bin, T13_real.bin,
-% T13_imag.bin, T22.bin, T23_real.bin, T23_imag.bin
-% T33.bin
-%
-%
-% Author: Samuel Foucher
-% Created in 2011
-%
-%
 error(nargchk(1,3,nargin, 'struct'));
 error(nargoutchk(0,1,nargout, 'struct'));
 global POLSARPRO_API_OUT_DIR;
