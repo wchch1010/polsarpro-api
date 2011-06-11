@@ -1,6 +1,9 @@
 function [num_samples,num_lines,nBands,nHeaderOffset,nDataType,sInterleave,nByteOrder]= ReadHeader(sName)
-
-fid=fopen([sName '.hdr']);
+if isempty(findstr(sName, 'hdr'))
+    fid=fopen([sName '.hdr']);
+else
+  fid=fopen([sName]);  
+end
 var_hdr = '';
 % read number of samples
 while ~strcmp(var_hdr, 'samples')&& ~feof(fid)
