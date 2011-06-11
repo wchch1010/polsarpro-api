@@ -1,4 +1,16 @@
 function SetPSPDir()
+% Synopsis:
+%  SetPSPDir()
+%
+% Description:
+%  check if polsarpro directories are known.
+%
+% See also
+%
+% Revisions:
+%   S. Foucher: initial version (2011/10/06)
+%
+
 global POLSARPRO_API_OUT_DIR;
 global POLSARPRO_API_IN_DIR;
 global POLSARPRO_DIR;
