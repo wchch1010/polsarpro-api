@@ -1,30 +1,22 @@
 function [st]= psp2mat(dataType,folderName,sHeaderName)
-
-%% Synopsis:
-%  [stPolSAR]= psp2mat(dataType, folderName)
+% Synopsis:
+%  [st]= psp2mat(dataType,folderName,sHeaderName)
 % 
 % Input:
-% - folderName  string  path directory of PolSARpro data input folder 
-% - dataType    string  'Covariance' or 'Coherency'
-% - dataSave    boolean to save data or not
+% - dataType     defines the data type ('T3', 'C3', 'FREEMAN');
+% - folderName   folder where to read the files (optional)
+% - sHeaderName  fixed header file (optional)
 %
 % Output:
-% - stPolSAR     structure  .data  [n m 6] data -> [n m (X11,X12,X13,X22,X23,X33)]
-%                           .info(.type,.history)
-% or
-% 
-% - stPolSAR     structure  .data(.band1,...,.band6) (X11,X12,X13,X22,X23,X33)
-%                           .info(.type,.history)
-% 
-% Description:
-% polSARpro2mat convert the coherency matrix file .bin of PolSARPro into  
-% a coherency or covariance matrix file .mat of Matlab.
-% 
-% Inputs  : In in_dir directory
-% T11.bin, T12_real.bin, T12_imag.bin, T13_real.bin,
-% T13_imag.bin, T22.bin, T23_real.bin, T23_imag.bin
-% T33.bin
+% - st    structure containing the data
 %
+% Description:
+%  Read polsarpro files and returns the content in structure
+%
+% See also
+%
+% Revisions:
+%   S. Foucher: initial version (2011/10/06)
 %
 
 global POLSARPRO_API_OUT_DIR;
