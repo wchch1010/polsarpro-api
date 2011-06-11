@@ -1,8 +1,8 @@
 function test_filters
-% test read and write functions
+% test filtering functions
 close all;
 clc;
-disp('Start test_read_write');
+disp('Start test_filters');
 load 'test.mat';
 st.info.NLooks= 1;
 [stOUT]= pspLeeSigmaFilter(st, st.info.NLooks, 9, 9, 3);
