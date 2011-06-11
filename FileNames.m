@@ -55,7 +55,11 @@ switch(upper(dataType))
         vComplex=[0 0];
         vFileNames{1} = 'wishart_H_alpha_class_1.bin';
         vFileNames{2} = 'wishart_H_A_alpha_class_1.bin';
-        
+    case 'PLANES_HAALPHA'
+        vComplex=[0 0 0];
+        vFileNames{1} = 'H_alpha_class.bin';
+        vFileNames{2} = 'H_A_class.bin';
+        vFileNames{3} = 'A_alpha_class.bin'; 
     otherwise
         disp(['Unknown format: ' dataType]);
         
