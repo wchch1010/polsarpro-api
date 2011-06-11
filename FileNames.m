@@ -60,6 +60,19 @@ switch(upper(dataType))
         vFileNames{1} = 'H_alpha_class.bin';
         vFileNames{2} = 'H_A_class.bin';
         vFileNames{3} = 'A_alpha_class.bin'; 
+    case 'YAMAGUCHI3'
+        vComplex=[0 0 0];
+        vFileNames{1} = 'Yamaguchi3_Odd.bin';
+        vFileNames{2} = 'Yamaguchi3_Dbl.bin';
+        vFileNames{3} = 'Yamaguchi3_Vol.bin'; 
+       
+    case 'YAMAGUCHI4'
+        vComplex=[0 0 0 0];
+        vFileNames{1} = 'Yamaguchi4_Odd.bin';
+        vFileNames{2} = 'Yamaguchi4_Dbl.bin';
+        vFileNames{3} = 'Yamaguchi4_Vol.bin'; 
+        vFileNames{4} = 'Yamaguchi4_Hlx.bin'; 
+        
     otherwise
         disp(['Unknown format: ' dataType]);
         
