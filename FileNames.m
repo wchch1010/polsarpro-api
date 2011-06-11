@@ -23,6 +23,11 @@ switch(upper(dataType))
         vFileNames{7} = 'C23_real.bin';
         vFileNames{8} = 'C23_imag.bin';
         vFileNames{9} = 'C33.bin';
+    case 'FREEMAN'
+        vComplex=[0 0 0];
+        vFileNames{1} = 'Freeman_Dbl.bin';
+        vFileNames{2} = 'Freeman_Vol.bin';
+        vFileNames{3} = 'Freeman_Odd.bin';
     otherwise
         disp(['Unknown format: ' dataType]);
         
