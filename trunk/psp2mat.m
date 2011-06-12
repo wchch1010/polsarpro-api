@@ -21,6 +21,8 @@ function [st]= psp2mat(dataType,folderName,sHeaderName)
 
 global POLSARPRO_API_OUT_DIR;
 global POLSARPRO_API_IN_DIR;
+global POLSARPRO_DIR;
+SetPSPDir();
 
 if exist('sHeaderName')
     HEADER_NAME= sHeaderName;
