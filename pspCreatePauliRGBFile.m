@@ -1,6 +1,6 @@
 function [stOut]= pspCreatePauliRGBFile(stIn)
 % Synopsis:
-%  [stOut]= pspCreatePauliRGBFile(stIn,Nlook, sigma, NwinFilter, NwinTgt)
+%  [stOut]= pspCreatePauliRGBFile(stIn)
 % 
 % Input:
 % - stIn     structure  .data
@@ -15,7 +15,7 @@ function [stOut]= pspCreatePauliRGBFile(stIn)
 % • Green = 10log(T33)
 % • Red = 10log(T22)
 %  
-% PolSARPro Description :  Cloude Decomposition of a coherency matrix
+% PolSARPro Description : 
 %
 % See also
 %
