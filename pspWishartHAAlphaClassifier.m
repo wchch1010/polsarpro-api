@@ -1,6 +1,6 @@
 function [stOut]= pspWishartHAAlphaClassifier(stIn, pct_min,nb_it_max,Bmp_flag)
 % Synopsis:
-%  [stOut]= pspWishartHAAlphaClassifier(stIn,NwinFilter)
+%  [stOut]= pspWishartHAAlphaClassifier(stIn, pct_min,nb_it_max,Bmp_flag)
 % 
 % Input:
 % - stIn     structure  .data
