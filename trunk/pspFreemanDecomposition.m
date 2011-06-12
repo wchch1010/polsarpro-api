@@ -20,13 +20,16 @@ function [stOut]= pspFreemanDecomposition(stIn, NwinFilter)
 %
 % Revisions:
 %   
-error(nargchk(2,2,nargin, 'struct'));
+error(nargchk(1,2,nargin, 'struct'));
 error(nargoutchk(1,1,nargout, 'struct'));
 
 global POLSARPRO_API_OUT_DIR;
 global POLSARPRO_API_IN_DIR;
 global POLSARPRO_DIR;
 SetPSPDir();
+if ~exist('NwinFilter')
+    NwinFilter= 1;
+end
 parseInputs(stIn, NwinFilter);
 
 stOut= [];
