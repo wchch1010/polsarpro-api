@@ -72,8 +72,15 @@ switch(upper(dataType))
         vFileNames{2} = 'Yamaguchi4_Dbl.bin';
         vFileNames{3} = 'Yamaguchi4_Vol.bin'; 
         vFileNames{4} = 'Yamaguchi4_Hlx.bin'; 
+    case 'H_ALPHA_LAMBDA_CLASS'
         
+        vComplex=[0 0 0 0];
+        vFileNames{1} = 'H_alpha_lambda_class.bin';
+        vFileNames{2} = 'H_alpha_lambda_class1.bin';
+        vFileNames{3} = 'H_alpha_lambda_class2.bin'; 
+        vFileNames{4} = 'H_alpha_lambda_class3.bin'; 
     otherwise
-        disp(['Unknown format: ' dataType]);
+         error('MATLAB:FileNames:badData', ...
+        'Unknown data format in field info.type.');
         
 end
