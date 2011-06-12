@@ -19,14 +19,18 @@ function [stOut]= pspHAAlphaDecomposition(stIn, NwinFilter)
 % See also
 %
 % Revisions:
-%   
-error(nargchk(2,2,nargin, 'struct'));
+%   S. Foucher: initial version (2011/11/06)
+%
+error(nargchk(1,2,nargin, 'struct'));
 error(nargoutchk(0,1,nargout, 'struct'));
 
 global POLSARPRO_API_OUT_DIR;
 global POLSARPRO_API_IN_DIR;
 global POLSARPRO_DIR;
 SetPSPDir();
+if ~exist('NwinFilter')
+    NwinFilter= 1;
+end
 alpbetdelgam= 0
 lambda= 0;
 alpha= 1;
