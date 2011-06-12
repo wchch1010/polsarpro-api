@@ -1,6 +1,6 @@
 function [stOut]= pspCloudeDecomposition(stIn, nwin, varargin)
 % Synopsis:
-%  [stOut]= polSARproCloudeDecomposition(data_in,nwin, dataType, offsetRow, offsetCol, numRow, numCol)
+%  [stOut]= polSARproCloudeDecomposition(data_in,nwin)
 % 
 % Input:
 % - stIn     structure  .data
@@ -8,7 +8,7 @@ function [stOut]= pspCloudeDecomposition(stIn, nwin, varargin)
 % - nwin     int  size of the averaging window
 % 
 % Output:
-% - dPolSAR     matrix    
+% - stOut     matrix    
 %
 % Description:
 % polSARproCloudeDecomposition applies a Cloude decomposition over a
@@ -16,8 +16,7 @@ function [stOut]= pspCloudeDecomposition(stIn, nwin, varargin)
 % compute the first eigenvector/eigenvalue. Return the covariance/coherence
 % matrix corresponsing to the largest eigenvector.
 %  
-% PolSARPro Description :  Lee refined polarimetric speckle filter moving
-% window with detection of heterogeneities (directional masks)
+% PolSARPro Description :  
 %
 % See also
 %
