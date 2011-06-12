@@ -1,6 +1,6 @@
-function [stOut]= pspHAAlphaDecomposition(stIn, NwinFilter)
+function [stOut]= pspHAAlphaDecomposition(stIn)
 % Synopsis:
-%  [stOut]= pspHAAlphaDecomposition(stIn,NwinFilter)
+%  [stOut]= pspHAAlphaDecomposition(stIn)
 % 
 % Input:
 % - stIn     structure  .data
@@ -21,7 +21,7 @@ function [stOut]= pspHAAlphaDecomposition(stIn, NwinFilter)
 % Revisions:
 %   S. Foucher: initial version (2011/11/06)
 %
-error(nargchk(1,2,nargin, 'struct'));
+error(nargchk(1,1,nargin, 'struct'));
 error(nargoutchk(0,1,nargout, 'struct'));
 
 global POLSARPRO_API_OUT_DIR;
