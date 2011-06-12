@@ -53,7 +53,7 @@ waitbar(0.3);
 [status,result]= system(sCommand);
 vProgress= str2num(result);
 if isempty(vProgress)
-    error('MATLAB:pspPWFFilter:badData', ...
+    error('MATLAB:pspCreatePauliRGBFile:badData', ...
         result);
 end
 stOut= imread([POLSARPRO_API_OUT_DIR '/out.bmp']);
