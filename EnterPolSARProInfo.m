@@ -22,7 +22,10 @@ sPSP_Path(k)= '/';
 
 inputDir = [sPSP_Path '/in'];
 outputDir = [sPSP_Path '/out'];
-
+if exist(inputDir,'dir')~=7
+    mkdir(inputDir);
+    mkdir(outputDir);
+end
 FID = fopen('path.txt', 'w+','n','US-ASCII');
 fprintf(FID, '%s\n',sPSP_Path);
 fprintf(FID, '%s\n',inputDir);
