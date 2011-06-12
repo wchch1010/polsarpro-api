@@ -77,6 +77,6 @@ if isempty(HEADER_NAME)
 else
     [num_samples,num_lines,nBands,nHeaderOffset,nDataType,sInterleave,nByteOrder]= ReadHeader([HEADER_NAME]);
 end
-data= multibandread([folderName sFileName],[num_samples,num_lines,nBands],'float32',nHeaderOffset,sInterleave,'ieee-le');
+data= multibandread([folderName sFileName],[num_lines,num_samples,nBands],'float32',nHeaderOffset,sInterleave,'ieee-le');
 
 
