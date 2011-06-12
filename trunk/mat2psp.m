@@ -1,20 +1,20 @@
 function stHeaderName= mat2psp(inPolSAR, folderName, bWriteBin)
 % Synopsis:
 %  stHeaderName= mat2psp(inPolSAR, folderName, bWriteBin)
-% 
+%
 % Input:
 % - inPolSAR     data to be written
 % - folderName   folder where to write the files (optional)
-% - bWriteBin    flag to write the bin files (default at true)
+% - bWriteBin    flag to write the bin files (optional, default at true)
 %
 % Output:
 % - stHeaderName   names of the header files
 %
 % Description:
-%  Write the matlab data in polsarpro files
+%  Write the matlab data in polsarpro format
 %
-% See also
-%
+% See also:
+%   psp2mat
 % Revisions:
 %   S. Foucher: initial version (2011/10/06)
 %
@@ -29,8 +29,8 @@ SetPSPDir();
 try,
     dataType = inPolSAR.info.type;
 catch,
-    disp('The data has no type info, inPolSAR.info.type missing');
-    return;
+    error('MATLAB:mat2psp:badData', ...
+        'Unknown data format, field info.type missing.');
 end
 if ~exist('bWriteBin','var')
     bWriteBin= 1;
@@ -46,51 +46,51 @@ num_samples= vSize(2);
 num_lines= vSize(1);
 num_bands= vSize(3);
 %% Coherency case T3
-if strcmpi(upper(dataType), 'T3')
-    [vFileNames vComplex]= FileNames(dataType);
-    
-    config = strtrim([folderName 'config.txt']);
-    p= 1;
-    for b=1:num_bands
-       if vComplex(b)
-           WriteBand(real(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
-            stHeaderName{p}= [ vFileNames{p} '.hdr'];
-           p=p+1;
-           WriteBand(imag(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
-            stHeaderName{p}= [ vFileNames{p} '.hdr'];
-           p=p+1;
-          
-       else
-           WriteBand(real(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
-           stHeaderName{p}= [ vFileNames{p} '.hdr'];
-           p=p+1;
-           
-       end
+
+[vFileNames vComplex]= FileNames(dataType);
+
+config = strtrim([folderName 'config.txt']);
+p= 1;
+for b=1:num_bands
+    if vComplex(b)
+        WriteBand(real(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
+        stHeaderName{p}= [ vFileNames{p} '.hdr'];
+        p=p+1;
+        WriteBand(imag(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
+        stHeaderName{p}= [ vFileNames{p} '.hdr'];
+        p=p+1;
+        
+    else
+        WriteBand(real(inPolSAR.data(:,:,b)),vFileNames{p},folderName,bWriteBin);
+        stHeaderName{p}= [ vFileNames{p} '.hdr'];
+        p=p+1;
+        
     end
-   
-    % Write the config.txt
-    WriteConfigFile(config,num_lines,num_samples);
-    
-    %msgbox('Done.','Convert *.mat to *.bin PolSARpro');
 end
+
+% Write the config.txt
+WriteConfigFile(config,num_lines,num_samples);
+
+%msgbox('Done.','Convert *.mat to *.bin PolSARpro');
+
 
 
 
 function WriteConfigFile(config,num_lines,num_samples)
-    fid=fopen(config, 'w+');
-    fprintf(fid, 'Nrow\n');
-    fprintf(fid, '%d\n',num_lines);
-    fprintf(fid, '---------\n');
-    fprintf(fid, 'Ncol\n');
-    fprintf(fid, '%d\n',num_samples);
-    fprintf(fid, '---------\n');
-    fprintf(fid, 'PolarCase\n');
-    fprintf(fid, 'monostatic\n');
-    fprintf(fid, '---------\n');
-    fprintf(fid, 'PolarType\n');
-    fprintf(fid, 'full\n');
-    fclose(fid);
-    
+fid=fopen(config, 'w+');
+fprintf(fid, 'Nrow\n');
+fprintf(fid, '%d\n',num_lines);
+fprintf(fid, '---------\n');
+fprintf(fid, 'Ncol\n');
+fprintf(fid, '%d\n',num_samples);
+fprintf(fid, '---------\n');
+fprintf(fid, 'PolarCase\n');
+fprintf(fid, 'monostatic\n');
+fprintf(fid, '---------\n');
+fprintf(fid, 'PolarType\n');
+fprintf(fid, 'full\n');
+fclose(fid);
+
 function success= WriteBand(data,sFileName,folderName,bWriteBin)
 num_samples= size(data,2);
 num_lines= size(data,1);
