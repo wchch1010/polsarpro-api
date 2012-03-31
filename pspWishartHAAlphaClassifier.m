@@ -86,6 +86,10 @@ else
     stOut.info.history{1}= 'pspWishartHAAlphaClassifier';
 end
 stOut.info.options= options;
+load 'Wishart_ColorMap8.mat';
+stOut.colormap.ColorMapWishart8= color_map;
+load 'Wishart_ColorMap16.mat';
+stOut.colormap.ColorMapWishart16= color_map;
 waitbar(1);
 close(h)
 
